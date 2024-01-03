@@ -18,7 +18,7 @@ jobs:
           msbuild MCNebula.sln /p:Configuration=Release
           cp -R bin/Release bin/Release_normal
           rm bin/Release/MCNebula_.dll bin/Release/MCNebula_.pdb
-          msbuild MCGalaxy/MCNebula_.csproj /p:Configuration=Release /t:Rebuild /p:DefineConstants="DEV"
+          msbuild MCNebula/MCNebula_.csproj /p:Configuration=Release /t:Rebuild /p:DefineConstants="DEV"
 
       - uses: ./.github/actions/notify_failure
         if: ${{ always() && steps.compile.outcome == 'failure' }}
@@ -37,7 +37,7 @@ jobs:
         if: ${{ always() && steps.compile.outcome == 'success' }}
         with:
           SOURCE_FILE: 'bin/Release'
-          DEST_NAME: 'MCGalaxy-dev'
+          DEST_NAME: 'MCNebula-dev'
           NOTIFY_MESSAGE: 'Successfully compiled MCNebula .NET Dev build.'
           WEBHOOK_URL: '${{ secrets.WEBHOOK_URL }}'
           
