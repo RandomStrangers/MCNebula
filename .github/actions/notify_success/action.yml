@@ -1,22 +1,14 @@
-name: Notify Success
+name: Notify success
 description: Uploads a compiled binary
 inputs:
-  SOURCE_FILE:
-    description: 'Path to file to upload'
-    required: true
-    type: string
-  DEST_NAME:
-    description: 'Name to use for the uploaded artifact'
-    required: true
-    type: string
- BOT_USERNAME:
+  BOT_USERNAME:
     description: 'Username to use for the discord bot message'
     default: 'MCNebula BuildBot'
     required: false
     type: string
   BOT_AVATAR:
     description: 'URL to use for the avatar of the discord bot message'
-    default: 'https://raw.githubusercontent.com/RandomStrangers/MCNebula/master/GUI/Nebula.jpg'
+    default: 'https://cdn.discordapp.com/attachments/1169445073159725080/1192165081795010680/Nebula.jpg'
     required: false
     type: string
   NOTIFY_MESSAGE:
@@ -27,6 +19,14 @@ inputs:
     description: 'Discord webhook URL'
     required: true
     type: string
+  SOURCE_FILE:
+    description: 'Path to file to upload'
+    required: true
+    type: string
+  DEST_NAME:
+    description: 'Name to use for the uploaded artifact'
+    required: true
+    type: string
 
 runs:
   using: "composite"
@@ -35,7 +35,7 @@ runs:
       with:
         name: ${{ inputs.DEST_NAME }}
         path: ${{ inputs.SOURCE_FILE }}
-    - name: Notify success
+    - name: Notify Success
       shell: sh
       run: |
-        curl ${{ inputs.WEBHOOK_URL }} -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"username\": \"${{ inputs.BOT_USERNAME }}\", \"avatar_url\": \"${{ inputs.BOT_AVATAR }}\", \"content\": \"${{ inputs.NOTIFY_MESSAGE }}\" }"
+        curl ${{ inputs.WEBHOOK_URL }} -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"username\": \"${{ inputs.BOT_USERNAME }}\", \"avatar_url\": \"${{ inputs.BOT_AVATAR }}\", \"content\": \"${{ inputs.NOTIFY_MESSAGE }
