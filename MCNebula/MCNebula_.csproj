@@ -27,7 +27,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>False</Optimize>
     <OutputPath>..\bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;DEV</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <BaseAddress>4194304</BaseAddress>
@@ -282,6 +282,7 @@
     <Compile Include="Commands\Moderation\CmdWarn.cs" />
     <Compile Include="Commands\Moderation\CmdWhitelist.cs" />
     <Compile Include="Commands\Moderation\CmdXban.cs" />
+    <Compile Include="Commands\Moderation\CmdXFreeze.cs" />
     <Compile Include="Commands\Moderation\ItemPermsCmd.cs" />
     <Compile Include="Commands\Moderation\ZoneCmds.cs" />
     <Compile Include="Commands\Moderation\ModActionCmd.cs" />

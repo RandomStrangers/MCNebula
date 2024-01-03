@@ -65,8 +65,20 @@ namespace MCNebula
         
         /// <summary> Divides by 16, rounding up if there is a remainder. </summary>
         public static int CeilDiv16(int x) { return (x + 15) / 16; }
+        // Not all languages use . as their decimal point separator
+        const NumberStyles style = NumberStyles.AllowLeadingWhite | NumberStyles.AllowTrailingWhite
+    | NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint;
+        public static bool TryParseSingle(string s, out float result)
+        {
+            if (s != null && s.IndexOf(',') >= 0) s = s.Replace(',', '.');
+            result = 0; float temp;
 
-        
+            if (!float.TryParse(s, style, NumberFormatInfo.InvariantInfo, out temp)) return false;
+            if (float.IsInfinity(temp) || float.IsNaN(temp)) return false;
+            result = temp;
+            return true;
+        }
+
         public static List<string> ReadAllLinesList(string path) {
             List<string> lines = new List<string>();
             using (StreamReader r = new StreamReader(path, Encoding.UTF8)) {

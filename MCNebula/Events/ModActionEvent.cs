@@ -105,10 +105,10 @@ namespace MCNebula.Events
         /// <summary> Player was unfrozen. </summary>
         Unfrozen,
         /// <summary> Player was jailed. </summary>
-        [Obsolete]
+        [Obsolete("Use Frozen instead", false)]
         Jailed,
         /// <summary> Player was unjailed. </summary>
-        [Obsolete]
+        [Obsolete("Use Unfrozen instead", false)]
         Unjailed,
         /// <summary> Player was given a warning. </summary>
         Warned,

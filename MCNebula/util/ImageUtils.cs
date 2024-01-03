@@ -90,14 +90,14 @@ namespace MCNebula.Util
 #if !NETSTANDARD
     unsafe sealed class GDIPlusBitmap : IBitmap2D
     {
-        Image img;
+        System.Drawing.Image img;
         Bitmap bmp;
         BitmapData data;
         byte* scan0;
         int stride;
 
         public override void Decode(byte[] data) {
-            Image tmp = Image.FromStream(new MemoryStream(data));
+            System.Drawing.Image tmp = System.Drawing.Image.FromStream(new MemoryStream(data));
             SetBitmap(tmp);
         }
 
@@ -114,7 +114,7 @@ namespace MCNebula.Util
             SetBitmap(resized);
         }
 
-        void SetBitmap(Image src) {
+        void SetBitmap(System.Drawing.Image src) {
             img = src;
             // although rare, possible src might actually be a Metafile instead
             bmp = (Bitmap)src;
@@ -140,8 +140,8 @@ namespace MCNebula.Util
                          || bmp.PixelFormat == PixelFormat.Format24bppRgb;
             if (!fastPath) { Get = GetGenericPixel; return; }
             // We can only use the fast path for 24bpp or 32bpp bitmaps
-            
-            Rectangle r = new Rectangle(0, 0, bmp.Width, bmp.Height);
+
+            System.Drawing.Rectangle r = new System.Drawing.Rectangle(0, 0, bmp.Width, bmp.Height);
             data = bmp.LockBits(r, ImageLockMode.ReadOnly, bmp.PixelFormat);
             scan0 = (byte*)data.Scan0;
             stride = data.Stride;

@@ -62,9 +62,6 @@
     <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\MCNebula\MCNebula_.csproj">
       <Project>{12597db0-7c34-4de1-88ea-9250ff3372eb}</Project>
       <Name>MCNebula_</Name>

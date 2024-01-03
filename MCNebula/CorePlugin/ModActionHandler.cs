@@ -83,8 +83,6 @@ namespace MCNebula.Core {
             ModerationTasks.FreezeCalcNextRun();
             Server.frozen.Save();
         }
-        
-        
         static void DoMute(ModAction e) {
             Player who = PlayerInfo.FindExact(e.Target);
             if (who != null) who.muted = true;

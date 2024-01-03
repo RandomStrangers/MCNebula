@@ -128,7 +128,7 @@ namespace MCNebula.Network
         public static byte[] ExtInfo(byte extsCount) {
             byte[] buffer = new byte[67];
             buffer[0] = Opcode.CpeExtInfo;
-            NetUtils.Write(Server.SoftwareNameVersioned, buffer, 1, false);
+            NetUtils.Write(Server.SoftwareNameVersionedAlpha, buffer, 1, false);
             NetUtils.WriteI16((short)extsCount, buffer, 65);
             return buffer;
         }
@@ -681,7 +681,7 @@ namespace MCNebula.Network
             buffer[4 + offset] = rot.HeadX;
             return buffer;
         }
-        #endregion
+#endregion
 
 
         #region Block definitions

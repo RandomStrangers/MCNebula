@@ -40,12 +40,12 @@ namespace MCNebula
         public static PlayerMetaList Notes = new PlayerMetaList("text/notes.txt");
         
         /// <summary> *** DO NOT USE THIS! *** Use VersionString, as this field is a constant and is inlined if used. </summary>
-        public const string InternalVersion = "1.0.0.0";
+        public const string InternalVersion = "1.0.0.1";
         public static string Version { get { return InternalVersion; } }
 #if DEV
-        public const string InternalVersionAlpha = "1.0.0.0b";
+        public const string InternalVersionAlpha = "1.0.0.1b";
 #else
-        public const string InternalVersionAlpha = "1.0.0.0a";
+        public const string InternalVersionAlpha = "1.0.0.1a";
 #endif
         public static string VersionAlpha { get { return InternalVersionAlpha; } }
 

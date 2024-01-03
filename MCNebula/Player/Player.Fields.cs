@@ -45,6 +45,7 @@ namespace MCNebula {
         /// <summary> The underlying socket for sending/receiving raw data </summary>
         public INetSocket Socket;
         public IGameSession Session;
+        [Obsolete("Derive from Session.ClientName() {Preferred}, or Session.appName instead", false)]
         public string appName { get { return Session.appName; } }
 
         public DateTime LastAction, AFKCooldown;

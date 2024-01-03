@@ -24,13 +24,14 @@ namespace MCNebula.Tasks {
     internal static class ModerationTasks {
 
         static SchedulerTask temprankTask, freezeTask, muteTask;
+
         internal static void QueueTasks() {
             temprankTask = Server.MainScheduler.QueueRepeat(
                 TemprankCheckTask, null, NextRun(Server.tempRanks));
             freezeTask = Server.MainScheduler.QueueRepeat(
                 FreezeCheckTask, null, NextRun(Server.frozen));
             muteTask = Server.MainScheduler.QueueRepeat(
-                MuteCheckTask, null, NextRun(Server.muted));
+                MuteCheckTask, null, NextRun(Server.muted)); 
         }
 
         
@@ -59,8 +60,7 @@ namespace MCNebula.Tasks {
             ModAction action = new ModAction(args[0], Player.Console, ModActionType.Unfrozen, "auto unfreeze");
             OnModActionEvent.Call(action);
         }
-        
-        
+
         internal static void MuteCheckTask(SchedulerTask task) {
             DoTask(task, Server.muted, MuteCallback);
         }
