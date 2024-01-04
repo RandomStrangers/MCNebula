@@ -36,8 +36,14 @@ namespace MCNebula
         [ConfigInt("port", "Server", 25565, 0, 65535)]
         public int Port = 25565;
 #if DEV
-        [ConfigInt("port2", "Server", 25566, 0, 65535)]
-        public int Port2 = 25566;
+
+        [ConfigString("softwarename", "Server", "MCNebula", false)]
+        public string SoftwareName = "MCNebula";
+        [ConfigString("softwareversion", "Server", "1.0.0.2b", false)]
+        public string Version = "1.0.0.2b";
+        [ConfigBool("use-2nd-heartbeat", "Server", false)]
+        public bool SecondHeartbeat = false;
+
 #endif
         [ConfigBool("public", "Server", false)]
         public bool Public = false;

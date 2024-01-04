@@ -147,16 +147,12 @@ namespace MCNebula.Network
             {
                 AuthService service = AuthService.GetOrCreate(url);
 
-                Heartbeat beat = new ClassiCubeBeat() { URL = url };
-#if DEV
-                Heartbeat beat2 = new ClassiCubeBeat2() { URL = url };
-                beat2.Salt = GenerateSalt(); // TODO: Just reference Service instead of copying salt?
-#endif
-                beat.Salt = service.Salt; // TODO: Just reference Service instead of copying salt?
+                Heartbeat beat = new ClassiCubeBeat
+                {
+                    URL = url,
+                    Salt = service.Salt // TODO: Just reference Service instead of copying salt?
+                };
                 Register(beat);
-#if DEV
-                Register(beat2);
-#endif
             }
         }
     }

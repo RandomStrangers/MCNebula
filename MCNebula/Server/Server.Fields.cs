@@ -40,12 +40,12 @@ namespace MCNebula
         public static PlayerMetaList Notes = new PlayerMetaList("text/notes.txt");
         
         /// <summary> *** DO NOT USE THIS! *** Use VersionString, as this field is a constant and is inlined if used. </summary>
-        public const string InternalVersion = "1.0.0.1";
+        public const string InternalVersion = "1.0.0.2";
         public static string Version { get { return InternalVersion; } }
 #if DEV
-        public const string InternalVersionAlpha = "1.0.0.1b";
+        public const string InternalVersionAlpha = "1.0.0.2b";
 #else
-        public const string InternalVersionAlpha = "1.0.0.1a";
+        public const string InternalVersionAlpha = "1.0.0.2a";
 #endif
         public static string VersionAlpha { get { return InternalVersionAlpha; } }
 
@@ -57,14 +57,21 @@ namespace MCNebula
             get { return fullName ?? SoftwareName + " " + Version; }
             set { fullName = value; }
         }
-
+#if !DEV
         public static string SoftwareNameVersionedAlpha
         {
             // By default, if SoftwareName gets externally changed, that is reflected in SoftwareNameVersioned too
             get { return fullNameAlpha ?? SoftwareName + " " + VersionAlpha; }
             set { fullNameAlpha = value; }
         }
-
+#else
+                public static string SoftwareNameVersionedAlpha
+        {
+            // By default, if SoftwareName gets externally changed, that is reflected in SoftwareNameVersioned too
+            get { return fullNameAlpha ?? Server.Config.SoftwareName + " " + Server.Config.Version; }
+            set { fullNameAlpha = value; }
+        }
+#endif
         public static INetListen Listener = new TcpListen();
 
         //Other

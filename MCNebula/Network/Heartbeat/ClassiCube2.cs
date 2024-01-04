@@ -71,14 +71,13 @@ namespace MCNebula.Network
             if (!hasIPv6 || firstIPv4 == null) return;
             proxyUrl = "http://"  + firstIPv4 + ":80";
         }
-
         public override string GetHeartbeatData()  {
             string name = Server.Config.Name;
             OnSendingHeartbeatEvent.Call(this, ref name);
             name = Colors.StripUsed(name);
             
             return
-                "&port="     + Server.Config.Port2 +
+                "&port="     + Server.Config.Port +
                 "&max="      + Server.Config.MaxPlayers +
                 "&name="     + Uri.EscapeDataString(name) +
                 "&public="   + Server.Config.Public +
